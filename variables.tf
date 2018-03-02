@@ -4,7 +4,7 @@ variable "name" {
   default     = "main-vpc"
 }
 
-variable "subnet-id" {
+variable "subnet_id" {
   description = "Public subnet identifier to place NAT into."
   type        = "string"
 }
