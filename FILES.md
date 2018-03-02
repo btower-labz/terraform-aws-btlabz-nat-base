@@ -3,6 +3,7 @@
 ## Directory structure
 ```
 .
+├── graph.dot
 ├── LICENSE
 ├── main.tf
 ├── outputs.tf
@@ -14,6 +15,7 @@
 
 | File | Description |
 | --- | --- |
+| ./graph.dot | | 
 | ./LICENSE | | 
 | ./main.tf | | 
 | ./outputs.tf | | 
