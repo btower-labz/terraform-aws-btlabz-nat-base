@@ -3,13 +3,14 @@ resource "aws_eip" "main" {
 }
 
 resource "aws_nat_gateway" "main" {
-  allocation_id = "${aws_eip.main.id}"
-  subnet_id     = "${var.subnet_id}"
+  allocation_id = aws_eip.main.id
+  subnet_id     = var.subnet_id
 
-  tags = "${merge(
+  tags = merge(
     var.tags,
-    map(
-      "Name", "${var.name}"
-    )
-  )}"
+    {
+      "Name" = var.name
+    },
+  )
 }
+
