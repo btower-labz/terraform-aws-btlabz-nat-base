@@ -25,7 +25,7 @@ module "pub_sn" {
 module "nat" {
   source    = "../../"
   subnet_id = "${module.pub_sn.subnet_id}"
-  name      = "${var.name_prefix}-pub-sn"
+  name      = "${var.name_prefix}-nat"
   tags = {
     Name = "${var.name_prefix}-nat"
   }
