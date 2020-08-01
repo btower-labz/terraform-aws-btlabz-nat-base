@@ -2,10 +2,8 @@ package main
 import input
 
 required_outputs = {
-  "vpc_id",
-  "rt_id",
-  "igw_id",
-  "vpc_cidr"
+  "public_ip",
+  "nat_id",
 }
 
 deny[msg] {

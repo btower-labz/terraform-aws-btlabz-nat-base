@@ -6,6 +6,10 @@ resource_whitelist = {
   "aws_internet_gateway",
   "aws_default_route_table",
   "aws_route",
+
+  "aws_eip",
+  "aws_nat_gateway",
+
 }
 
 module_whitelist = {
