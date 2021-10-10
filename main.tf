@@ -1,5 +1,12 @@
 resource "aws_eip" "main" {
   vpc = true
+
+  tags = merge(
+    var.tags,
+    {
+      "Name" = var.name
+    },
+  )
 }
 
 resource "aws_nat_gateway" "main" {
@@ -12,4 +19,10 @@ resource "aws_nat_gateway" "main" {
       "Name" = var.name
     },
   )
+}
+
+resource "aws_ec2_tag" "netif_tags" {
+  resource_id = aws_nat_gateway.main.network_interface_id
+  key         = "Name"
+  value       = var.name
 }
