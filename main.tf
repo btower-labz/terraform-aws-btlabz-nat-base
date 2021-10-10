@@ -20,3 +20,9 @@ resource "aws_nat_gateway" "main" {
     },
   )
 }
+
+resource "aws_ec2_tag" "netif_tags" {
+  resource_id = aws_nat_gateway.main.network_interface_id
+  key         = "Name"
+  value       = var.name
+}
