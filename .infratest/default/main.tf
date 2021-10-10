@@ -1,6 +1,6 @@
 module "vpc" {
   source   = "btower-labz/btlabz-vpc-base/aws"
-  version  = "0.13.0-000"
+  version  = "1.0.0-000"
   cidr     = "192.168.0.0/16"
   vpc_name = "${var.name_prefix}-vpc"
   tags = {
@@ -11,9 +11,9 @@ module "vpc" {
 
 module "pub_sn" {
   source  = "btower-labz/btlabz-pub-sn/aws"
-  version = "0.13.0-001"
-  vpc_id  = "${module.vpc.vpc_id}"
-  rt_id   = "${module.vpc.rt_id}"
+  version = "1.0.0-000"
+  vpc_id  = module.vpc.vpc_id
+  rt_id   = module.vpc.rt_id
   az      = data.aws_availability_zone.az.name
   cidr    = "192.168.1.0/24"
   name    = "${var.name_prefix}-pub-sn"
@@ -24,7 +24,7 @@ module "pub_sn" {
 
 module "nat" {
   source    = "../../"
-  subnet_id = "${module.pub_sn.subnet_id}"
+  subnet_id = module.pub_sn.subnet_id
   name      = "${var.name_prefix}-nat"
   tags = {
     Name = "${var.name_prefix}-nat"
